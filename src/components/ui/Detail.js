@@ -14,7 +14,7 @@ const DetailsWrapper = styled.div`
     margin-bottom: 20px;
 `;
 
-function Detail(props) {
+function Detail() {
     const api_key = 'e81185a43efae1fa764c99b459ac3548';
     const URL = 'https://api.themoviedb.org/3/movie/';
 
@@ -22,12 +22,6 @@ function Detail(props) {
     const movieInfo = location.state;
     const [genres, setGenres] = useState();
     const [trailer, settrailer] = useState();
-
-    // https://api.themoviedb.org/3/movie/457332?api_key=e81185a43efae1fa764c99b459ac3548
-
-
-    // 'https://api.themoviedb.org/3/movie/457332/videos?api_key=e81185a43efae1fa764c99b459ac3548'
-    // 'https://api.themoviedb.org/3/movie/667538/videos?api_key=e81185a43efae1fa764c99b459ac3548'
 
     async function getDetail() {
         const detailRes = await fetch(URL + movieInfo.id + '?api_key=' + api_key);
@@ -47,7 +41,7 @@ function Detail(props) {
     useEffect(() => {
         getDetail();
         getVideo();
-    });
+    }, []);
 
     return (
         <DetailsWrapper>
