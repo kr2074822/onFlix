@@ -1,25 +1,17 @@
 import { styled } from "styled-components";
 import 'swiper/css';
 import Genre from "./Genre";
+import DetailTitle from "./DetailTitle";
+import MovieRate from "./MovieRate";
 
 const DetailMovieWrapper = styled.div`
-    & > span {
-        display: block;
-        color: #D1D1D1;
-        font-size: 50px;
-        margin-bottom: 20px;
-        font-weight: 700;
-    }
-    
     & > p {
         color: #D1D1D1;
         font-size: 20px;
         line-height: 1.3;
         font-weight: 100;
     }
-
 `;
-
 
 
 function DetailMovie(props) {
@@ -28,22 +20,16 @@ function DetailMovie(props) {
     return (
 
         <DetailMovieWrapper>
-            <span>{movieInfo.title}</span>
+            <DetailTitle movieInfo={movieInfo} />
+            <MovieRate movieInfo={movieInfo} ></MovieRate>
+            {/* <div>
+                <span>Rate : </span>
+                <div className="">
+
+                </div>
+            </div> */}
             <Genre genres={genres} />
-            {/* <ul>
-                {
-                    genres !== undefined ?
-                        genres.map((v, i) => {
-                            return (
-                                <li key={i}>{v}</li>
-                            )
-                        })
-                        : null
-                }
-            </ul> */}
-            <p>
-                {movieInfo.overview}
-            </p>
+            <p>{movieInfo.overview}</p>
         </DetailMovieWrapper>
     );
 }

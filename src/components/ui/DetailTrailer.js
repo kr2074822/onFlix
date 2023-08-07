@@ -3,10 +3,13 @@ import 'swiper/css';
 import YouTube from 'react-youtube';
 
 const DetailTrailerWrapper = styled.div`
-    & > div{
-        height: 400px;
-    }
+    height: 500px;
     margin-bottom: 50px;
+
+    & > div{
+        height: 500px;
+    }
+    
 `;
 
 

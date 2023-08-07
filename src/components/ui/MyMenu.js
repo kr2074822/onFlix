@@ -7,7 +7,7 @@ const MyMenuWrapper = styled.div`
 function MyMenu(props) {
     return (
         <MyMenuWrapper>
-            <img src='images/userIcon.png' alt='myIcon' />
+            <img src={process.env.PUBLIC_URL + '/images/userIcon.png'} alt='myIcon' />
         </MyMenuWrapper>
     )
 }

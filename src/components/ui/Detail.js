@@ -10,8 +10,7 @@ const DetailsWrapper = styled.div`
     display: flex;
     justify-content: left;
     align-items: flex-start;
-    padding: 0 20px;
-    margin-bottom: 20px;
+    padding: 0 20px 20px;
 `;
 
 function Detail() {
@@ -41,8 +40,9 @@ function Detail() {
     useEffect(() => {
         getDetail();
         getVideo();
-    }, []);
+    }, [movieInfo]);
 
+    console.log(movieInfo);
     return (
         <DetailsWrapper>
             <DetailPost path={ movieInfo.poster_path } />

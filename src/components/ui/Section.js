@@ -1,19 +1,10 @@
 import { styled } from "styled-components";
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { Link } from 'react-router-dom';
-import SectionTitle from "./SectionTitle";
-
-
-
-
 import "swiper/css/free-mode";
-import "swiper/css/pagination";
-
+import { Link } from 'react-router-dom';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SectionTitle from "./SectionTitle";
 import { Autoplay } from "swiper/modules";
-
-
-
 
 const SectionWrapper = styled.div`
     &:not(:last-child){
