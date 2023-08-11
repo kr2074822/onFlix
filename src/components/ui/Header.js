@@ -17,8 +17,8 @@ const HeaderWrapper = styled.div`
 function Header(props) {
     return (
         <HeaderWrapper>
-            <MenuNavigation />
-            <MyNavigation />
+            <MenuNavigation searchResetHandler={props.searchResetHandler} />
+            <MyNavigation searchHandler={props.searchHandler} search={props.search}/>
         </HeaderWrapper>
     )
 }

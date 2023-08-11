@@ -7,6 +7,7 @@ import SectionTitle from "./SectionTitle";
 import { Autoplay } from "swiper/modules";
 
 const SectionWrapper = styled.div`
+    display: ${props => props.check};
     &:not(:last-child){
         margin-bottom: 50px;
     }
@@ -17,10 +18,10 @@ const MovieImg = styled.img`
 `;
 
 function Section(props) {
-    return (
-        <SectionWrapper>
-            <SectionTitle title={props.title} />
 
+    return (
+        <SectionWrapper check={props.movieData !== undefined ? '': 'none'}>
+            <SectionTitle title={props.title} />
             <Swiper spaceBetween={0} slidesPerView={5} loop={true} autoplay={{ delay: 2500, disableOnInteraction: false }} modules={[Autoplay]}>
                 {
                     props.movieData !== undefined ?

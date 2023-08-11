@@ -22,12 +22,6 @@ function DetailMovie(props) {
         <DetailMovieWrapper>
             <DetailTitle movieInfo={movieInfo} />
             <MovieRate movieInfo={movieInfo} ></MovieRate>
-            {/* <div>
-                <span>Rate : </span>
-                <div className="">
-
-                </div>
-            </div> */}
             <Genre genres={genres} />
             <p>{movieInfo.overview}</p>
         </DetailMovieWrapper>

@@ -19,7 +19,6 @@ const SearchWrapper = styled.div`
 `;
 
 const SearchBtnWrapper = styled.button`
-
     height: 30px;
     background: #000000;
     border: none;
@@ -33,10 +32,15 @@ const SearchBtnWrapper = styled.button`
 
 
 
+
 function Search(props) {
+    const searchHandler = props.searchHandler;
+    const search = props.search;
+
+
     return (
         <SearchWrapper>
-            <input type='text' placeholder="Movie, TV Show" />
+            <input type='text' placeholder="Movie, TV Show" value={search} onChange={(searchHandler)} />
             <SearchBtnWrapper><FaSearch className='seacrch_icon'></FaSearch></SearchBtnWrapper>
         </SearchWrapper>
     )

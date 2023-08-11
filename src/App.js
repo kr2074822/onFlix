@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router';
 import Main from './components/ui/Main';
 import Detail from './components/ui/Detail';
+import Footer from './components/ui/Footer';
 
 
 const Container = styled.div`
@@ -17,6 +18,35 @@ function App() {
     const URL = 'https://api.themoviedb.org/3/movie/';
 
     const [movieData, setMovieData] = useState([]);
+    const [searchData, setSearchData] = useState([]);
+    const [search, setSearch] = useState('');
+
+
+    const searchHandler = function (e) {
+        setSearch(e.target.value);
+    }
+
+    useEffect(() => {
+        const temp = {};
+
+        Object.keys(movieData).map((item, i) => {
+            const tempArr = [];
+            movieData[item].filter((v, i) => {
+                if (v.hasOwnProperty('title') && (v.title.toLowerCase()).includes(search.toLowerCase())) {
+                    tempArr.push(v);
+                    temp[item] = tempArr;
+                }
+            })
+        });
+        setSearchData(temp)
+
+    }, [search])
+
+
+
+    const searchResetHandler = function (e) {
+        setSearch('');
+    }
 
     async function fetchData() {
         const popRes = await fetch(URL + 'popular?api_key=' + api_key);
@@ -32,29 +62,33 @@ function App() {
         const upcomResult = await upcomRes.json();
 
         setMovieData({
-            popular: popResult.results,
-            nowPlay: nowResult.results,
-            topRated: topResult.results,
-            upComing: upcomResult.results,
+            'Popular': popResult.results,
+            'Now Play': nowResult.results,
+            'Top Rated': topResult.results,
+            'Upcoming': upcomResult.results,
         });
     }
 
     useEffect(() => {
-        fetchData()
+        fetchData();
     }, []);
 
     return (
         <Container className="App">
-            <Header></Header>
-
-
-
-            <Routes>
-                <Route path="/" element={<Main movieData={movieData} />}></Route>
-                <Route path="/detail/:id" element={<Detail data={movieData}></Detail>}></Route>
-            </Routes>
-
-
+            <Header searchHandler={searchHandler} searchResetHandler={searchResetHandler} search={search} />
+            {
+                search.length !== 0 ?
+                    <Routes>
+                        <Route path="/" element={<Main movieData={searchData} />}></Route>
+                        <Route path="/detail/:id" element={<Detail data={movieData}></Detail>}></Route>
+                    </Routes>
+                    :
+                    <Routes>
+                        <Route path="/" element={<Main movieData={movieData} />}></Route>
+                        <Route path="/detail/:id" element={<Detail data={movieData}></Detail>}></Route>
+                    </Routes>
+            }
+            <Footer />
         </Container>
     );
 }

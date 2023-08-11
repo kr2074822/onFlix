@@ -19,13 +19,15 @@ const MenuListWrapper = styled.div`
 `;
 
 
-function Menu() {
+function Menu(props) {
+    const searchResetHandler = props.searchResetHandler;
+
     return (
         <MenuListWrapper>
             <ul>
-                <Link to='/'>Home</Link>
-                <Link>TV Shows</Link>
-                <Link>Movie</Link>
+                <Link to='/' onClick={searchResetHandler} >Home</Link>
+                <Link onClick={searchResetHandler} >TV Shows</Link>
+                <Link onClick={searchResetHandler} >Movie</Link>
             </ul>
         </MenuListWrapper>
     )

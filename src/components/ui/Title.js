@@ -11,9 +11,11 @@ const TitleWrapper = styled.div`
 `;
 
 function Title(props) {
+    const searchResetHandler = props.searchResetHandler;
+
     return (
         <TitleWrapper>
-            <Link to="/">Onflix</Link>
+            <Link to="/" onClick={searchResetHandler} >Onflix</Link>
         </TitleWrapper>
     )
 }

@@ -11,7 +11,7 @@ const MyWrapper = styled.div`
 function MyNavigation(props) {
     return (
         <MyWrapper>
-            <Search />
+            <Search searchHandler={props.searchHandler} search={props.search}/>
             <MyMenu />
         </MyWrapper>
     )

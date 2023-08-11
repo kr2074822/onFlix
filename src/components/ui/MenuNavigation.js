@@ -12,8 +12,8 @@ const MenuWrapper = styled.div`
 function MenuNavigation(props) {
     return (
         <MenuWrapper>
-            <Title />
-            <Menu />
+            <Title searchResetHandler={props.searchResetHandler}/>
+            <Menu searchResetHandler={props.searchResetHandler}/>
         </MenuWrapper>
 
     )

@@ -40,6 +40,7 @@ function Detail() {
     useEffect(() => {
         getDetail();
         getVideo();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieInfo]);
 
     console.log(movieInfo);
