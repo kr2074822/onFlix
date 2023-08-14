@@ -41,7 +41,7 @@ function Search(props) {
     return (
         <SearchWrapper>
             <input type='text' placeholder="Movie, TV Show" value={search} onChange={(searchHandler)} />
-            <SearchBtnWrapper><FaSearch className='seacrch_icon'></FaSearch></SearchBtnWrapper>
+            <SearchBtnWrapper><FaSearch className='seacrch_icon' /></SearchBtnWrapper>
         </SearchWrapper>
     )
 }

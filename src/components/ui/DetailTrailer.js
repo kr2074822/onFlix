@@ -9,8 +9,17 @@ const DetailTrailerWrapper = styled.div`
     & > div{
         height: 500px;
     }
-    
 `;
+
+const NoTrailer = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    & p {
+        font-size: 40px;
+        color: #D1D1D1;
+    }
+`
 
 
 
@@ -31,8 +40,8 @@ function DetailTrailer(props) {
                                 modestbranding: 1,
                             },
                         }}
-                    ></YouTube>
-                    : null
+                    />
+                    : <NoTrailer><p>No Trailer :(</p></NoTrailer>
             }
         </DetailTrailerWrapper>
     );

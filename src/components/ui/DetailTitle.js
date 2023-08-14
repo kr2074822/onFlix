@@ -22,10 +22,11 @@ const ReleaseDate = styled.span`
 
 function DetailTitle(props) {
     const movieInfo = props.movieInfo;
+    console.log(props);
     return (
         <TitleWrapper>
-            <Title>{movieInfo.title}</Title>
-            <ReleaseDate>{(movieInfo.release_date).substr(0, 4)}</ReleaseDate>
+            <Title>{movieInfo.title || movieInfo.name}</Title>
+            <ReleaseDate>{(movieInfo.release_date || movieInfo.first_air_date).substr(0, 4)}</ReleaseDate>
         </TitleWrapper>
     );
 }

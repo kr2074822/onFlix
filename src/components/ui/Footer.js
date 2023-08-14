@@ -31,7 +31,7 @@ function Footer() {
             <FooterInfo data={footerInfo} />
             <FooterInfo data={footerPolicy} />
             <Copyright>
-                <p>© 2019 OnFlix, some rights reserved.</p>
+                <p>© 2023 OnFlix, some rights reserved.</p>
             </Copyright>
         </FooterWrapper>
     )

@@ -4,6 +4,7 @@ import DetailTrailer from "./DetailTrailer";
 import DetailMovie from "./DetailMovie";
 
 const DetailInfoWrapper = styled.div`
+    width: 100%;
 `;
 
 

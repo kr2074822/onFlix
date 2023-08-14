@@ -16,6 +16,7 @@ const DetailsWrapper = styled.div`
 function Detail() {
     const api_key = 'e81185a43efae1fa764c99b459ac3548';
     const URL = 'https://api.themoviedb.org/3/movie/';
+    const TV_URL = 'https://api.themoviedb.org/3/tv/';
 
     const location = useLocation();
     const movieInfo = location.state;
@@ -23,7 +24,7 @@ function Detail() {
     const [trailer, settrailer] = useState();
 
     async function getDetail() {
-        const detailRes = await fetch(URL + movieInfo.id + '?api_key=' + api_key);
+        const detailRes = await fetch((movieInfo.title ? URL : TV_URL) + movieInfo.id + '?api_key=' + api_key);
         const detailResult = await detailRes.json();
         const temp = [];
         (detailResult.genres).forEach(e => temp.push(e.name));
@@ -31,8 +32,9 @@ function Detail() {
     }
 
     async function getVideo() {
-        const vidoeRes = await fetch(URL + movieInfo.id + '/videos?api_key=' + api_key);
+        const vidoeRes = await fetch((movieInfo.title ? URL : TV_URL)  + movieInfo.id + '/videos?api_key=' + api_key);
         const vidoeResult = await vidoeRes.json();
+        console.log(vidoeResult);
         const temp = (vidoeResult.results).find((v) => v.type === 'Trailer')
         settrailer(temp);
     }
@@ -41,13 +43,15 @@ function Detail() {
         getDetail();
         getVideo();
         // eslint-disable-next-line react-hooks/exhaustive-deps
+        return () => {
+            window.scrollTo(0, 0);
+        }
     }, [movieInfo]);
 
-    console.log(movieInfo);
     return (
         <DetailsWrapper>
-            <DetailPost path={ movieInfo.poster_path } />
-            <DetailInfo genres={genres} trailer={trailer} movieInfo={movieInfo}></DetailInfo>
+            <DetailPost path={movieInfo.poster_path} />
+            <DetailInfo genres={genres} trailer={trailer} movieInfo={movieInfo} />
         </DetailsWrapper >
     );
 }
