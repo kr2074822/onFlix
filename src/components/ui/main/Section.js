@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SectionTitle from "./SectionTitle";
 import { Autoplay } from "swiper/modules";
+import { useSelector } from "react-redux";
 
 const SectionWrapper = styled.div`
     display: ${props => props.check};
@@ -14,15 +15,27 @@ const SectionWrapper = styled.div`
 `;
 
 const MovieImg = styled.img`
-    width: 300px;
+    width: 100%;
 `;
 
 function Section(props) {
 
+    const resize = useSelector((state) => state.resize);
+    const sliderHandler = () => {
+        if (resize.width > 1024) {
+            return 5
+        } else if (resize.width > 767) {
+            return 3
+        } else {
+            return 2
+        }
+    }
+
+
     return (
-        <SectionWrapper check={props.movieData !== undefined ? '': 'none'}>
+        <SectionWrapper check={props.movieData !== undefined ? '' : 'none'}>
             <SectionTitle title={props.title} />
-            <Swiper spaceBetween={0} slidesPerView={5} loop={true} autoplay={{ delay: 2500, disableOnInteraction: false }} modules={[Autoplay]}>
+            <Swiper spaceBetween={20} slidesPerView={sliderHandler()} loop={true} autoplay={{ delay: 2500, disableOnInteraction: false }} modules={[Autoplay]}>
                 {
                     props.movieData !== undefined ?
                         (props.movieData).map((v, i) => {

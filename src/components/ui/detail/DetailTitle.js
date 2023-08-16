@@ -22,7 +22,6 @@ const ReleaseDate = styled.span`
 
 function DetailTitle(props) {
     const movieInfo = props.movieInfo;
-    console.log(props);
     return (
         <TitleWrapper>
             <Title>{movieInfo.title || movieInfo.name}</Title>

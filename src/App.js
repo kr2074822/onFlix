@@ -7,7 +7,8 @@ import Main from './components/ui/main/Main';
 import Detail from './components/ui/detail/Detail';
 import OnflixLogin from './components/ui/login/OnflixLogin';
 import OnflixSignUp from './components/ui/signUp/OnflixSignUp';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { resizeHandler } from './store/store';
 
 const Container = styled.div`
     background: #000000;
@@ -26,28 +27,45 @@ function App() {
     const [tvData, setTvData] = useState([]);
     const [totalData, setTotalData] = useState([]);
     const [searchData, setSearchData] = useState([]);
-    
-    // -------------------------------------------------------
+    const search = useSelector((state) => state.search.value);
+    const dispatch = useDispatch();
+    const menuType = useSelector((state) => state.menuType);
 
-    let search = useSelector((state) => state.search.value);
-
-    // -------------------------------------------------------
+    window.addEventListener('resize', function () {
+        let temp = {
+            width: window.innerWidth,
+        }
+        dispatch(resizeHandler(temp))
+    })
 
     useEffect(() => {
-        const temp = {};
+        let data; 
+        if (menuType.value === 'all') {
+            data = totalData;
+        } else if (menuType.value === 'movie') {
+            data = movieData;
+        } else {
+            data = tvData;
+        }
 
-        Object.keys(totalData).map((item, i) => {
+
+        const temp = {};
+        Object.keys(data).map((item, i) => {
             const tempArr = [];
-            totalData[item].filter((v, i) => {
+            data[item].filter((v, i) => {
                 if ((v.hasOwnProperty('title') || v.hasOwnProperty('name')) && ((v.title ? (v.title.toLowerCase()).includes(search.toLowerCase()) : (v.name.toLowerCase()).includes(search.toLowerCase())))) {
                     tempArr.push(v);
                     temp[item] = tempArr;
                 }
-            })
+                return null;
+
+            });
+
+            return null;
         });
 
-        setSearchData(temp)
-    }, [search])
+        setSearchData(temp);
+    }, [search, totalData, tvData, movieData, menuType])
 
     useEffect(() => {
         setTotalData({ ...movieData, ...tvData });
@@ -106,10 +124,12 @@ function App() {
         <Container className="App">
             <Routes>
                 {/* <Route path="/" element={<Main searchHandler={searchHandler} searchResetHandler={searchResetHandler} search={search} movieData={search.length !== 0 ? searchData : totalData} />} /> */}
-                <Route path="/" element={<Main search={search} movieData={search.length !== 0 ? searchData : totalData} />} />
+                <Route path="/" element={<Main search={search} movieData={search.length !== 0 ? searchData : totalData}  />} />
                 <Route path="/detail/:id" element={<Detail data={movieData} />} />
                 <Route path="/login" element={<OnflixLogin />} />
                 <Route path="/join" element={<OnflixSignUp />} />
+                <Route path="/movie" element={<Main search={search} movieData={search.length !== 0 ? searchData : movieData} />} />
+                <Route path="/tvshow" element={<Main search={search} movieData={search.length !== 0 ? searchData : tvData} />} />
             </Routes>
         </Container>
     );

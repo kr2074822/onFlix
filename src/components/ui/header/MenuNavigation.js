@@ -1,8 +1,6 @@
 import { styled } from "styled-components";
 import Title from "./Title";
 import Menu from "./Menu";
-import { useDispatch } from "react-redux";
-import { searchReset } from "./../../../store/store";
 
 const MenuWrapper = styled.div`
     display: flex;
@@ -10,13 +8,12 @@ const MenuWrapper = styled.div`
     align-items: center;
 `;
 
-function MenuNavigation(props) {
-    const dispatch = useDispatch();
+function MenuNavigation() {
 
     return (
         <MenuWrapper>
-            <Title searchResetHandler={()=> {dispatch(searchReset())}}/>
-            <Menu searchResetHandler={()=> {dispatch(searchReset())}}/>
+            <Title />
+            <Menu />
         </MenuWrapper>
 
     )

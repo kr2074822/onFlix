@@ -36,7 +36,6 @@ function Detail(props) {
     async function getVideo() {
         const vidoeRes = await fetch((movieInfo.title ? URL : TV_URL)  + movieInfo.id + '/videos?api_key=' + api_key);
         const vidoeResult = await vidoeRes.json();
-        console.log(vidoeResult);
         const temp = (vidoeResult.results).find((v) => v.type === 'Trailer')
         settrailer(temp);
     }

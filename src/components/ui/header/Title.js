@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { menuTypeHandler, searchReset } from "../../../store/store";
 
 const TitleWrapper = styled.div`
     & > a {
@@ -11,11 +13,11 @@ const TitleWrapper = styled.div`
 `;
 
 function Title(props) {
-    const searchResetHandler = props.searchResetHandler;
-
+    const dispatch = useDispatch();
+    
     return (
         <TitleWrapper>
-            <Link to="/" onClick={searchResetHandler} >Onflix</Link>
+            <Link to="/" onClick={() => { dispatch(searchReset()); dispatch(menuTypeHandler('all')); }} >Onflix</Link>
         </TitleWrapper>
     )
 }

@@ -49,17 +49,51 @@ const user = createSlice({
             state.id = action.payload.id;
             state.pw = action.payload.pw;
         }
-        
+
     }
 });
 
 export let { userIdHandler, userPwHandler, userHandler } = user.actions
+
+
+const resize = createSlice({
+    name: 'resize',
+    initialState: {
+        width: window.innerWidth,
+    },
+    reducers: {
+        resizeHandler(state, action) {
+            state.width = action.payload.width;
+            console.log(state.width);
+            // console.log(action.payload);
+        }
+    }
+});
+
+export let { resizeHandler } = resize.actions;
+
+const menuType = createSlice({
+    name: 'menuType',
+    initialState: {
+        value: 'all'
+    },
+    reducers: {
+        menuTypeHandler(state, action) {
+            state.value = action.payload;
+        }
+    }
+})
+
+export let { menuTypeHandler } = menuType.actions;
+
 
 export default configureStore({
     reducer: {
         movieData: movieData.reducer,
         search: search.reducer,
         login: login.reducer,
-        user: user.reducer
+        user: user.reducer,
+        resize: resize.reducer,
+        menuType: menuType.reducer
     }
 })

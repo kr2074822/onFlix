@@ -1,5 +1,7 @@
 import { styled } from "styled-components";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { menuTypeHandler, searchReset } from "./../../../store/store";
 
 const MenuListWrapper = styled.div`
     & ul {
@@ -20,14 +22,15 @@ const MenuListWrapper = styled.div`
 
 
 function Menu(props) {
-    const searchResetHandler = props.searchResetHandler;
+    const dispatch = useDispatch();
+
 
     return (
         <MenuListWrapper>
             <ul>
-                <Link to='/' onClick={searchResetHandler} >Home</Link>
-                <Link onClick={searchResetHandler} >TV Shows</Link>
-                <Link onClick={searchResetHandler} >Movie</Link>
+                <Link to='/' onClick={() => { dispatch(searchReset()); dispatch(menuTypeHandler('all')); }} >Home</Link>
+                <Link to='/tvshow' onClick={() => { dispatch(searchReset()); dispatch(menuTypeHandler('tvshow')); }}  >TV Shows</Link>
+                <Link to='/movie' onClick={() => { dispatch(searchReset()); dispatch(menuTypeHandler('movie')); }} >Movie</Link>
             </ul>
         </MenuListWrapper>
     )
