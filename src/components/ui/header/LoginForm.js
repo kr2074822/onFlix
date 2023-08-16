@@ -7,11 +7,27 @@ const LoginFormWrapper = styled.div`
     align-items: center;
 
     & > a {
+        font-size: 16px;
         color: #f1f1f1;
-        
     }
     & > a:not(:last-child) {
         margin-right: 10px;
+    }
+
+    @media (max-width: 767px) { 
+        & > a {
+            font-size: 14px;
+        }
+
+        & > a:not(:last-child) {
+            margin-right: 8px;
+        }
+    }
+
+    @media (max-width: 767px) { 
+        & > a {
+            font-size: 12px;
+        }
     }
 `;
 

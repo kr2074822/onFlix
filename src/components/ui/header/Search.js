@@ -18,6 +18,25 @@ const SearchWrapper = styled.div`
         outline: none;
         color: #D1D1D1;
     }
+
+    @media (max-width: 1024px) {  
+        padding-right: 14px;
+
+        & input {
+            font-size: 14px;
+            width: 150px;
+        }
+    }
+
+    @media (max-width: 767px) {  
+        padding-right: 8px;
+
+        & input {
+            font-size: 12px;
+            width: 100px;
+        }
+    }
+
 `;
 
 const SearchBtnWrapper = styled.button`
@@ -29,6 +48,18 @@ const SearchBtnWrapper = styled.button`
     & .seacrch_icon {
         font-size: 25px;
         color: #D1D1D1;
+    }
+
+    @media (max-width: 1024px) {  
+        & .seacrch_icon {
+            font-size: 18px;
+        }
+    }
+
+    @media (max-width: 1024px) {  
+        & .seacrch_icon {
+            font-size: 14px;
+        }
     }
 `;
 
