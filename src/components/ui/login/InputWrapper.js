@@ -19,21 +19,14 @@ const infoData = { id: '', pw: '' };
 
 
 function InputWrapper(props) {
-    // const [userInfo, setUserInfo] = useState({ id: '', pw: '' });
-    // const user = useSelector((state) => state.user);
-
     const dispatch = useDispatch();
     const infoVal = function (e) {
-
         if (props.type === 'text') {
             infoData.id = e.target.value;
         } else {
             infoData.pw = e.target.value;
         }
-
-        // setUserInfo(infoData);
-        // console.log(infoData);
-        // console.log(userInfo);
+        
         dispatch(userHandler(infoData));
     }
 

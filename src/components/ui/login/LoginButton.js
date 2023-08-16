@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { styled } from "styled-components";
-import { loginHandler } from "../../../store/store";
+import { loginHandler, userHandler } from "../../../store/store";
 import { useNavigate } from "react-router";
 
 const LoginBtn = styled.div`
@@ -32,10 +32,10 @@ function LoginButton(props) {
         if (type === 'join') {
             alert("Welcome Onfilx !");
             window.localStorage.setItem('localUser', JSON.stringify(user));
+            navigate('/login');
+            dispatch(userHandler(''));
         } else {
-            let localUser = window.localStorage.getItem('localUser');
-            localUser = JSON.parse(localUser);
-
+            let localUser = JSON.parse(window.localStorage.getItem('localUser'));
             if (user.id === localUser.id && user.pw === localUser.pw) {
                 alert(`Welcome ${localUser.id} !`);
                 dispatch(loginHandler());
