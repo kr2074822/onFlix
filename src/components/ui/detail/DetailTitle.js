@@ -8,11 +8,14 @@ const TitleWrapper = styled.div`
     margin-bottom: 20px;
 `;
 
-const Title =styled.span`
+const Title = styled.span`
     color: #D1D1D1;
     font-size: 50px;
     font-weight: 700;
     margin-right: 10px;
+    @media (max-width: 767px) {  
+        font-size: 30px;
+    }
 `;
 
 const ReleaseDate = styled.span`

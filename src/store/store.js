@@ -16,11 +16,9 @@ const search = createSlice({
         searchQuery(state, action) {
             state.value = action.payload;
         },
-
         searchReset(state) {
             state.value = '';
         },
-
     }
 });
 
@@ -49,7 +47,6 @@ const user = createSlice({
             state.id = action.payload.id;
             state.pw = action.payload.pw;
         }
-
     }
 });
 
@@ -64,8 +61,6 @@ const resize = createSlice({
     reducers: {
         resizeHandler(state, action) {
             state.width = action.payload.width;
-            console.log(state.width);
-            // console.log(action.payload);
         }
     }
 });

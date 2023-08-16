@@ -4,6 +4,20 @@ const DetailPostWrapper = styled.div`
     & img {
         margin-right: 20px;
     }
+    @media (max-width: 1024px) {  
+
+        margin-bottom: 20px;
+        & img {
+            width: 350px;
+            margin: initial;
+        }
+    }
+    @media (max-width: 767px) {  
+
+        & img {
+            width: 100%;
+        }
+    }
 `;
 
 function DetailPost(props) {

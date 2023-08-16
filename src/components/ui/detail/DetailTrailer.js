@@ -9,6 +9,15 @@ const DetailTrailerWrapper = styled.div`
     & > div{
         height: 500px;
     }
+
+    @media (max-width: 767px) { 
+        height: 200px;
+
+        & > div{
+            height: 200px;
+        }
+
+    }
 `;
 
 const NoTrailer = styled.div`

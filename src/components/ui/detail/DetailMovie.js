@@ -11,6 +11,11 @@ const DetailMovieWrapper = styled.div`
         line-height: 1.3;
         font-weight: 100;
     }
+    @media (max-width: 767px) {  
+        & > p {
+            font-size: 16px;
+        }
+    }
 `;
 
 
