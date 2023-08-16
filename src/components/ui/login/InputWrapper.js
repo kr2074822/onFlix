@@ -1,5 +1,8 @@
 import { styled } from "styled-components";
 import { CommonSpan, CommonInput } from "./CommonStyled";
+import { useDispatch } from "react-redux";
+import { userHandler } from "../../../store/store";
+// import { useState } from "react";
 
 const InputWrap = styled.div`
     &:not(:last-child) {
@@ -11,9 +14,15 @@ const InputWrap = styled.div`
     flex-direction: column;
 `;
 
-const infoData = {id: '', pw: ''};
+
+const infoData = { id: '', pw: '' };
+
 
 function InputWrapper(props) {
+    // const [userInfo, setUserInfo] = useState({ id: '', pw: '' });
+    // const user = useSelector((state) => state.user);
+
+    const dispatch = useDispatch();
     const infoVal = function (e) {
 
         if (props.type === 'text') {
@@ -21,7 +30,11 @@ function InputWrapper(props) {
         } else {
             infoData.pw = e.target.value;
         }
-        props.seInfoFn(infoData);
+
+        // setUserInfo(infoData);
+        // console.log(infoData);
+        // console.log(userInfo);
+        dispatch(userHandler(infoData));
     }
 
     return (

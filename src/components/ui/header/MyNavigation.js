@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import Search from "./Search";
 import MyMenu from "./MyMenu.js";
 import LoginForm from "./LoginForm";
+import { useSelector } from "react-redux";
 
 const MyWrapper = styled.div`
     display: flex;
@@ -10,12 +11,17 @@ const MyWrapper = styled.div`
 `;
 
 function MyNavigation(props) {
+
+    let loginChk = useSelector((state) => state.login);
     return (
         <MyWrapper>
-            <Search searchHandler={props.searchHandler} search={props.search}/>
-            <MyMenu />
-            <LoginForm />
-
+            <Search />
+            {
+                loginChk.value ?
+                    <MyMenu />
+                    :
+                    <LoginForm />
+            }
         </MyWrapper>
     )
 }

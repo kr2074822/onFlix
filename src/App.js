@@ -7,7 +7,7 @@ import Main from './components/ui/main/Main';
 import Detail from './components/ui/detail/Detail';
 import OnflixLogin from './components/ui/login/OnflixLogin';
 import OnflixSignUp from './components/ui/signUp/OnflixSignUp';
-
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
     background: #000000;
@@ -26,7 +26,12 @@ function App() {
     const [tvData, setTvData] = useState([]);
     const [totalData, setTotalData] = useState([]);
     const [searchData, setSearchData] = useState([]);
-    const [search, setSearch] = useState('');
+    
+    // -------------------------------------------------------
+
+    let search = useSelector((state) => state.search.value);
+
+    // -------------------------------------------------------
 
     useEffect(() => {
         const temp = {};
@@ -44,7 +49,6 @@ function App() {
         setSearchData(temp)
     }, [search])
 
-
     useEffect(() => {
         setTotalData({ ...movieData, ...tvData });
     }, [movieData, tvData]);
@@ -52,18 +56,7 @@ function App() {
     useEffect(() => {
         fetchData();
         tvFetchData();
-
-        setTotalData({ ...movieData, ...tvData });
     }, []);
-
-
-    const searchResetHandler = function (e) {
-        setSearch('');
-    }
-    const searchHandler = function (e) {
-        setSearch(e.target.value);
-    }
-
 
     async function fetchData() {
         const popRes = await fetch(URL + 'popular?api_key=' + api_key);
@@ -108,11 +101,13 @@ function App() {
         });
 
     }
+
     return (
         <Container className="App">
             <Routes>
-                <Route path="/" element={<Main searchHandler={searchHandler} searchResetHandler={searchResetHandler} search={search} movieData={search.length !== 0 ? searchData : totalData} />} />
-                <Route path="/detail/:id" element={<Detail data={movieData} searchHandler={searchHandler} searchResetHandler={searchResetHandler} search={search} />} />
+                {/* <Route path="/" element={<Main searchHandler={searchHandler} searchResetHandler={searchResetHandler} search={search} movieData={search.length !== 0 ? searchData : totalData} />} /> */}
+                <Route path="/" element={<Main search={search} movieData={search.length !== 0 ? searchData : totalData} />} />
+                <Route path="/detail/:id" element={<Detail data={movieData} />} />
                 <Route path="/login" element={<OnflixLogin />} />
                 <Route path="/join" element={<OnflixSignUp />} />
             </Routes>

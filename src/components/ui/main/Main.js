@@ -13,7 +13,7 @@ function Main(props) {
 
     return (
         <>
-            <Header searchHandler={props.searchHandler} searchResetHandler={props.searchResetHandler} search={props.search} />
+            <Header />
             <MainWrapper>
                 {
                     Object.keys(props.movieData).length !== 0 ?

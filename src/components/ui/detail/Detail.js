@@ -52,7 +52,7 @@ function Detail(props) {
 
     return (
         <>
-            <Header searchHandler={props.searchHandler} searchResetHandler={props.searchResetHandler} search={props.search} />
+            <Header />
             <DetailsWrapper>
                 <DetailPost path={movieInfo.poster_path} />
                 <DetailInfo genres={genres} trailer={trailer} movieInfo={movieInfo} />

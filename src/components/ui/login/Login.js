@@ -25,7 +25,7 @@ function Login(props) {
         <LoginForm>
             <LoginInput info={info} seInfoFn={seInfoFn} />
             <Find />
-            <LoginButton text="Login" info={info} setCheckFn={setCheckFn} />
+            <LoginButton text="Login" info={info} setCheckFn={setCheckFn} type="login"/>
         </LoginForm>
     )
 }

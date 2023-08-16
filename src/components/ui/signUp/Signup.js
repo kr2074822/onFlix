@@ -1,5 +1,4 @@
 import { styled } from "styled-components";
-import InputWrapper from "../login/InputWrapper";
 import Find from "../login/Find";
 import LoginButton from "../login/LoginButton";
 import SignUpInput from "./SignUpInput";
@@ -16,7 +15,7 @@ function Signup(props) {
         <SignupForm>
             <SignUpInput />
             <Find />
-            <LoginButton text="Sign Up" />
+            <LoginButton text="Sign Up" type="join"/>
 
         </SignupForm>
     )

@@ -1,4 +1,7 @@
+import { useDispatch, useSelector } from "react-redux";
 import { styled } from "styled-components";
+import { loginHandler } from "../../../store/store";
+import { useNavigate } from "react-router";
 
 const LoginBtn = styled.div`
     & button {
@@ -21,26 +24,37 @@ const LoginBtn = styled.div`
 
 
 function LoginButton(props) {
-    const myInfo = props.info;
+    const type = props.type;
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const submitHandler = function (type) {
+        if (type === 'join') {
+            alert("Welcome Onfilx !");
+            window.localStorage.setItem('localUser', JSON.stringify(user));
+        } else {
+            let localUser = window.localStorage.getItem('localUser');
+            localUser = JSON.parse(localUser);
+
+            if (user.id === localUser.id && user.pw === localUser.pw) {
+                alert(`Welcome ${localUser.id} !`);
+                dispatch(loginHandler());
+                navigate('/');
+            } else {
+                alert(`Check your ID or Password`);
+            }
+        }
+    }
+
     return (
         <LoginBtn>
             <button onClick={(e) => {
-                // checkInfo(myInfo, props.setCheckFn);
+                submitHandler(type);
                 e.preventDefault();
             }}>{props.text}</button>
         </LoginBtn>
     )
 }
-
-
-// function checkInfo(info, setCheckFn) {
-//     if (info.id === userInfo.id && info.pw === userInfo.pw) {
-//         alert('로그인 성공');
-//         setCheckFn(true);
-//     } else {
-//         alert('로그인 실패');
-//     }
-// }
 
 export default LoginButton;
 
