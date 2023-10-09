@@ -81,6 +81,16 @@ const menuType = createSlice({
 
 export let { menuTypeHandler } = menuType.actions;
 
+const title = createSlice({
+    name: 'title',
+    initialState: {
+        value: [
+            'Movie Popular', 'Movie Now Play', 'Top Rated', 'Upcoming',
+            'Tv Popular', 'Airing Today', 'Tv Top Rated', 'On The Air'
+        ]
+    },
+});
+
 
 export default configureStore({
     reducer: {
@@ -89,6 +99,7 @@ export default configureStore({
         login: login.reducer,
         user: user.reducer,
         resize: resize.reducer,
-        menuType: menuType.reducer
+        menuType: menuType.reducer,
+        title: title.reducer
     }
 })

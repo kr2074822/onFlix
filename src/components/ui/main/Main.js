@@ -3,6 +3,7 @@ import NoResult from "../detail/NoResult";
 import Section from "./Section";
 import Header from "../header/Header";
 import Footer from "../footer/Footer";
+import { useSelector } from "react-redux";
 
 const MainWrapper = styled.div`
     min-height: 100vh;
@@ -10,6 +11,7 @@ const MainWrapper = styled.div`
 `;
 
 function Main(props) {
+    const title = useSelector((state) => state.title.value);
 
     return (
         <>
@@ -19,7 +21,7 @@ function Main(props) {
                     Object.keys(props.movieData).length !== 0 ?
                         Object.keys(props.movieData).map((v, i) => {
                             return (
-                                <Section movieData={props.movieData[v]} key={i} title={v} />
+                                <Section movieData={props.movieData[v]} key={i} title={title[i]} />
                             )
                         })
                         : <NoResult search={props.search} />

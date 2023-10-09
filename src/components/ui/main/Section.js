@@ -19,7 +19,6 @@ const MovieImg = styled.img`
 `;
 
 function Section(props) {
-
     const resize = useSelector((state) => state.resize);
     const sliderHandler = () => {
         if (resize.width > 1024) {
@@ -37,8 +36,8 @@ function Section(props) {
             <SectionTitle title={props.title} />
             <Swiper spaceBetween={20} slidesPerView={sliderHandler()} loop={true} autoplay={{ delay: 2500, disableOnInteraction: false }} modules={[Autoplay]}>
                 {
-                    props.movieData !== undefined ?
-                        (props.movieData).map((v, i) => {
+                    props.movieData.status === 'success' ?
+                        (props.movieData.data.results).map((v, i) => {
                             return (
                                 <SwiperSlide key={i}>
                                     <Link to={"/detail/" + v.id} state={v} className="i" >

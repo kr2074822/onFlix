@@ -11,7 +11,6 @@ const SectionTitleWrapper = styled.div`
 `
 
 function SectionTitle(props) {
-
     return (
         <SectionTitleWrapper>
             <span>{props.title}</span>
