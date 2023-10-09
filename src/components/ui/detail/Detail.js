@@ -42,7 +42,7 @@ function Detail(props) {
         return () => {
             window.scrollTo(0, 0);
         }
-    }, [movieInfo]);
+    }, []);
 
     return (
         <>
