@@ -20,6 +20,7 @@ function Main(props) {
                 {
                     Object.keys(props.movieData).length !== 0 ?
                         Object.keys(props.movieData).map((v, i) => {
+                            // console.log(props.movieData[v].data.results)
                             return (
                                 <Section movieData={props.movieData[v]} key={i} title={title[i]} />
                             )

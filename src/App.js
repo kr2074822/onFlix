@@ -9,8 +9,7 @@ import OnflixLogin from './components/ui/login/OnflixLogin';
 import OnflixSignUp from './components/ui/signUp/OnflixSignUp';
 import { useDispatch, useSelector } from 'react-redux';
 import { resizeHandler } from './store/store';
-import { useQueries, useQuery } from "react-query";
-import { logDOM } from '@testing-library/react';
+import { useQueries } from "react-query";
 
 const Container = styled.div`
     background: #000000;

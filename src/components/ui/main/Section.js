@@ -30,14 +30,17 @@ function Section(props) {
         }
     }
 
-
     return (
         <SectionWrapper check={props.movieData !== undefined ? '' : 'none'}>
-            <SectionTitle title={props.title} />
+            {
+                props.movieData.status === 'success' || props.movieData.results?.length > 0 ?
+                    <SectionTitle title={props.title} />
+                    : null
+            }
             <Swiper spaceBetween={20} slidesPerView={sliderHandler()} loop={true} autoplay={{ delay: 2500, disableOnInteraction: false }} modules={[Autoplay]}>
                 {
-                    props.movieData.status === 'success' ?
-                        (props.movieData.data.results).map((v, i) => {
+                    props.movieData.status === 'success' || props.movieData.results?.length > 0 ?
+                        (props.movieData.data?.results || props.movieData.results).map((v, i) => {
                             return (
                                 <SwiperSlide key={i}>
                                     <Link to={"/detail/" + v.id} state={v} className="i" >

@@ -28,9 +28,7 @@ const NoTrailer = styled.div`
         font-size: 40px;
         color: #D1D1D1;
     }
-`
-
-
+`;
 
 function DetailTrailer(props) {
     const trailer = props.trailer;

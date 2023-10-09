@@ -17,7 +17,12 @@ function DetailInfo(props) {
     return (
         <DetailInfoWrapper>
             <DetailTrailer trailer={trailer} />
-            <DetailMovie genres={genres} movieInfo={movieInfo}/>
+            {
+                genres.length > 0 ?
+                <DetailMovie genres={genres} movieInfo={movieInfo}/>
+                : null
+
+            }
         </DetailInfoWrapper>
     );
 }

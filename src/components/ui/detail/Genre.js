@@ -24,7 +24,7 @@ function Genre(props) {
                 genres !== undefined ?
                     genres.map((v, i) => {
                         return (
-                            <li key={i}>{v}</li>
+                            <li key={i}>{v.name}</li>
                         )
                     })
                     : null
